@@ -1,5 +1,6 @@
 /*
  * Função que associa uma funçào listener quando o DOM é carregado
+ * Equivale ao $(function() { ... }); do jQuery
  * Obtido em http://youmightnotneedjquery.com/
  */
 var documentReady = function (fn) {
@@ -130,7 +131,7 @@ documentReady(function () {
   // 6) AJAX
   document.getElementById("botao3").addEventListener("click", function () {
     var request = new XMLHttpRequest();
-    request.open('GET', 'AjaxServlet', true);
+    request.open('GET', 'ajax-servlet', true);
 
     request.onload = function () {
       if (request.status >= 200 && request.status < 300) {
