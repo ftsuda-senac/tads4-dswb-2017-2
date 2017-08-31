@@ -54,7 +54,7 @@ public class AdicionarProdutoServlet extends HttpServlet {
    */
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
-	  throws ServletException, IOException {
+          throws ServletException, IOException {
     RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/itens.jsp");
     dispatcher.forward(request, response);
   }
@@ -69,7 +69,7 @@ public class AdicionarProdutoServlet extends HttpServlet {
    */
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
-	  throws ServletException, IOException {
+          throws ServletException, IOException {
     HttpSession sessao = request.getSession(true);
     if (sessao.getAttribute("itens") == null) {
       sessao.setAttribute("itens", new ArrayList<Produto>());
@@ -81,6 +81,7 @@ public class AdicionarProdutoServlet extends HttpServlet {
     List<Produto> itens = (List<Produto>) sessao.getAttribute("itens");
     itens.add(p);
     
+    // POST-REDIRECT-GET
     response.sendRedirect("adicionar-produto");
   }
 

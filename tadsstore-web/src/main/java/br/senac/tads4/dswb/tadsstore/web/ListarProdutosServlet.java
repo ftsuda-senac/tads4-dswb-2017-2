@@ -52,15 +52,16 @@ public class ListarProdutosServlet extends HttpServlet {
    */
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
-	  throws ServletException, IOException {
-  
+          throws ServletException, IOException {
+
     ProdutoService service = new ProdutoServiceFakeImpl();
-    List<Produto> produtos  = service.listar(0, 100);
+    List<Produto> produtos = service.listar(0, 100);
     request.setAttribute("produtos", produtos);
-    
-    RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/lista.jsp");
+
+    RequestDispatcher dispatcher = 
+            request.getRequestDispatcher("/WEB-INF/jsp/lista.jsp");
     dispatcher.forward(request, response);
- 
+
   }
 
   /**
@@ -73,8 +74,8 @@ public class ListarProdutosServlet extends HttpServlet {
    */
   @Override
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
-	  throws ServletException, IOException {
-    
+          throws ServletException, IOException {
+
   }
 
 }
