@@ -8,6 +8,7 @@
   <body>
     <h1>Exemplo Spring MVC com query string</h1>
     <p><label>Nome:</label><span th:text="${nomeAttr}">nome preenchido</span></p>
-    <p><label>Idade:</label><span th:text="${idadeAttr}">idade preenchida</span></p>
+    <p><label>Idade:</label>
+      <span th:text="*{idadeAttr}? *{idadeAttr} : 'não informado' ">idade preenchida</span></p>
   </body>
 </html>

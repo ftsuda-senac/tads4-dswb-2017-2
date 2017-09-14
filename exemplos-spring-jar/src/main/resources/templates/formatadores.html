@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>TODO supply a title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <h1>Exemplos de formatadores</h1>
+    <p><label>Data e Hora</label> <span th:text="${#dates.format(dataHora)}">01/01/2017</span></p>
+    <p><label>Moeda</label> <span th:text="${#numbers.formatCurrency(moeda)}">R$ 9.999,99</span></p>
+    <p><label>Valor booleano V</label><span th:text="${booleanoV}">x</span></p>
+    <p><label>Valor booleano F</label><span th:text="*{booleanoF}? 'Verdadeiro' : 'Falso'">x</span></p>
+    <p th:switch="${valorAleatorio}"><label>Número de 1 a 3</label>
+      <span th:case="1">Um</span>
+      <span th:case="2">Dois</span>
+      <span th:case="*">Zero</span>
+  </body>
+</html>
