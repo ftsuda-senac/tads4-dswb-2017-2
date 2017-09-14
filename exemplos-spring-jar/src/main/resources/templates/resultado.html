@@ -7,12 +7,15 @@
   </head>
   <body>
     <h1>Dados preenchidos</h1>
-    <div>
+    <div th:if="${pessoa != null}">
       <h2 th:text="${pessoa.nome}"></h2>
       <h2 th:text="${pessoa.idade}"></h2>
       <h2 th:text="${pessoa.sexo}"></h2>
       <h2 th:text="${pessoa.preferencias}"></h2>
       <h2 th:text="${pessoa.contato}"></h2>
+    </div>
+    <div th:if="${pessoa == null}">
+      <h2>Não há dados para exibir</h2>
     </div>
   </body>
 </html>
