@@ -18,7 +18,7 @@
 	  <h2 th:text="${p.nome}">Produto</h2>
 	  <img src="./img/bolo1.png" th:src="@{/img/bolo1.png}" class="img-thumbnail">
 	  <h3 th:text="${#numbers.formatCurrency(p.preco)}">R$ 99,99</h3>
-	  <form action="#" method="post">
+	  <form action="#" th:action="@{/compra/adicionar/{id}(id=${p.id})}" method="post">
 	    <input type="hidden" name="id" th:value="${p.id}" />
 	    <button type="submit" class="btn btn-success btn-lg btn-block">
 	      <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Comprar</button>

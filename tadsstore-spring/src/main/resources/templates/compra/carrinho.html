@@ -1,11 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html layout:decorate="~{geral/modelo}">
   <head>
-    <title>TODO supply a title</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho</title>
   </head>
   <body>
-    <div>TODO write content</div>
+    <div layout:fragment="conteudo">
+      <div class="container">
+	<table class="table">
+	  <thead>
+	    <tr>
+	      <th>ID</th>
+	      <th>Nome</th>
+	      <th>Valor</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <tr th:each="item : ${@compraController.carrinho}">
+	      <td th:text="${item.id}">ID do produto</td>
+	      <td th:text="${item.nome}">Nome do produto</td>
+	      <td th:text="${#numbers.formatCurrency(item.preco)}">R$ 99,99</td>
+	    </tr>
+	  </tbody>
+	</table>
+	
+      </div>
+    </div>
   </body>
 </html>
