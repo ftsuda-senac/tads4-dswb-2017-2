@@ -1,10 +1,6 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
+<html xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
   <head>
     <title>TADS Store</title>
     <meta charset="UTF-8">
@@ -37,25 +33,13 @@ and open the template in the editor.
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-    <div class="container-fluid">
-      <div class="jumbotron">
-	<div style="background-image: url('./img/bolo2.jpg'); background-size: cover; background-repeat: no-repeat; height: 400px; ">
-	  &nbsp;
-	</div>
+    <div layout:fragment="conteudo">
+      <div class="container">
+	<h1>Template master do TADS Store</h1>
       </div>
     </div>
-    <div class="container">
-      <div class="row">
-	<div class="col-md-6 col-lg-4 well">
-	  <h1>Produto</h1>
-	  <img src="./img/bolo1.png" class="img-thumbnail">
-	  <button type="button" class="btn btn-success btn-lg btn-block">
-	    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Comprar</button>
-	  <button type="button" class="btn btn-info btn-lg btn-block">
-	    <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Ver mais</button>
-	</div>
-      </div>
-
-    </div>
+    <footer style="height: 30px; background-color: #ccc">
+      <p>&COPY; Senac 2017</p>
+    </footer>
   </body>
 </html>
