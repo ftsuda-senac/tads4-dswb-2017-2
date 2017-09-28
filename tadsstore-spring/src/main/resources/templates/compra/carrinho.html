@@ -6,6 +6,9 @@
   <body>
     <div layout:fragment="conteudo">
       <div class="container">
+	<div class="alert alert-success" th:if="${mensagem != null}">
+	  <p th:text="${mensagem}">Mensagem bla bla bla</p>
+	</div>
 	<table class="table">
 	  <thead>
 	    <tr>
