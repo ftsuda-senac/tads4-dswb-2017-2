@@ -6,6 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
-    <div>TODO write content</div>
+    <h1>Cadastro de produtos</h1>
+    <div th:if="${msgSucesso}">
+      <h2 th:text="${msgSucesso}"></h2>
+    </div>
+    <div>
+      <form th:action="@{/gerenciamento/produto/salvar}" 
+	    th:object="${produto}" method="post"
+	    novalidate>
+	<div>
+	  <label>Nome</label>
+	  <input type="text" name="nome" th:field="*{nome}" required />
+	  <p th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></p>
+	</div>
+	<div>
+	  <label>Descrição</label>
+	  <textarea name="descricao" th:field="*{descricao}" required></textarea>
+	  <p th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}"></p>
+	</div>
+	<div>
+	  <label>Preço</label>
+	  <input type="text" name="preco" th:field="*{preco}" required />
+	  <p th:if="${#fields.hasErrors('preco')}" th:errors="*{preco}"></p>
+	</div>
+	<div><input type="submit" value="Enviar" /></div>
+      </form>
+    </div>
   </body>
 </html>

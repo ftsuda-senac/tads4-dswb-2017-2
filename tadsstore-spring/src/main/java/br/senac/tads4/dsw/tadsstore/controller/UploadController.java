@@ -9,8 +9,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,12 +24,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 @RequestMapping("/upload")
 public class UploadController {
-  
+
   @RequestMapping(method = RequestMethod.GET)
   public ModelAndView mostrarTela() {
     return new ModelAndView("upload");
   }
- 
+
   @RequestMapping(method = RequestMethod.POST)
   public ModelAndView uploadArquivo(
           @RequestParam("arquivo") MultipartFile arquivo,
@@ -41,16 +39,16 @@ public class UploadController {
               "Erro ao carregar arquivo");
       return new ModelAndView("redirect:/upload");
     }
-    
+
     try {
       byte[] bytes = arquivo.getBytes();
-      Path destino = Paths.get("C:/desenv/uploads/" + 
-              arquivo.getOriginalFilename());
+      Path destino = Paths.get("C:/desenv/uploads/"
+              + arquivo.getOriginalFilename());
       Files.write(destino, bytes);
-      
+
       redirectAttributes.addFlashAttribute("mensagem",
-              "Arquivo " + arquivo.getOriginalFilename() + 
-                      " carregado com sucesso");
+              "Arquivo " + arquivo.getOriginalFilename()
+              + " carregado com sucesso");
       return new ModelAndView("redirect:/upload");
     } catch (IOException ex) {
       redirectAttributes.addFlashAttribute("mensagemErro",
@@ -58,6 +56,5 @@ public class UploadController {
       return new ModelAndView("redirect:/upload");
     }
   }
-  
-  
+
 }
