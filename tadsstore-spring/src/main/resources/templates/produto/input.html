@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
-    <h1>Cadastro de produtos</h1>
+    <h1 th:text="#{produto.title}">Cadastro de produtos</h1>
     <div th:if="${msgSucesso}">
       <h2 th:text="${msgSucesso}"></h2>
     </div>
@@ -15,21 +15,25 @@
 	    th:object="${produto}" method="post"
 	    novalidate>
 	<div>
-	  <label>Nome</label>
-	  <input type="text" name="nome" th:field="*{nome}" required />
+	  <label th:text="#{produto.nome.label}">Nome</label>
+	  <input type="text" name="nome" th:field="*{nome}" required 
+		 th:placeholder="#{produto.nome.placeholder}" />
 	  <p th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></p>
 	</div>
 	<div>
-	  <label>Descrição</label>
-	  <textarea name="descricao" th:field="*{descricao}" required></textarea>
+	  <label th:text="#{produto.descricao.label}">Descrição</label>
+	  <textarea name="descricao" th:field="*{descricao}" 
+		th:placeholder="#{produto.descricao.placeholder}" required></textarea>
 	  <p th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}"></p>
 	</div>
 	<div>
-	  <label>Preço</label>
-	  <input type="text" name="preco" th:field="*{preco}" required />
+	  <label th:text="#{produto.preco.label}">Preço</label>
+	  <input type="text" name="preco" th:field="*{preco}" 
+		 th:placeholder="#{produto.preco.placeholder}" required />
 	  <p th:if="${#fields.hasErrors('preco')}" th:errors="*{preco}"></p>
 	</div>
-	<div><input type="submit" value="Enviar" /></div>
+	<div><input type="submit" value="Enviar" 
+		    th:value="#{botao.enviar}" /></div>
       </form>
     </div>
   </body>
