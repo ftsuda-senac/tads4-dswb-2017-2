@@ -60,4 +60,11 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter
     source.setCacheSeconds(10);
     return source;
   }
+
+  @Bean(name = "validator")
+  public LocalValidatorFactoryBean validator() {
+    LocalValidatorFactoryBean bean = new LocalValidatorFactoryBean();
+    bean.setValidationMessageSource(messageSource());
+    return bean;
+  }
 }

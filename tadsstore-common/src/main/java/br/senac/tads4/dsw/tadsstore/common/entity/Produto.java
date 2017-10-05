@@ -41,16 +41,16 @@ public class Produto implements Serializable {
 
   //@NotNull 
   @Size(min = 1, max = 50, 
-          message = "Preencha o nome seu animal")
+          message = "{produto.nome.erro}")
   private String nome;
 
   //@NotNull
   @Size(min = 1, max = 200,
-          message = "Preencha a descrição")
+          message = "{produto.descricao.erro}")
   private String descricao;
 
   @Digits(integer = 6, fraction = 2,
-          message = "Preço inválido")
+          message = "{produto.preco.erro}")
   private BigDecimal preco;
 
   private Date dtCadastro;
