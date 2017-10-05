@@ -21,12 +21,14 @@
 	  <form action="#" th:action="@{/compra/adicionar/{id}(id=${p.id})}" method="post">
 	    <input type="hidden" name="id" th:value="${p.id}" />
 	    <button type="submit" class="btn btn-success btn-lg btn-block">
-	      <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Comprar</button>
+	      <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+	      <span th:text="#{botao.comprar}">Comprar</span></button>
 	  </form>
 	  <a href="#" role="button" 
 	     th:href="@{/produto/{id}(id=${p.id})}" 
 	     class="btn btn-info btn-lg btn-block">
-	    <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Ver mais
+	    <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+	    <span th:text="#{botao.vermais}">Ver mais</span>
 	  </a>
 	</div>
       </div>
