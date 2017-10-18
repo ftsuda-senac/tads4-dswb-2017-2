@@ -26,12 +26,15 @@ package br.senac.tads4.dsw.tadsstore.common.entity;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /**
@@ -40,6 +43,12 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "TB_CATEGORIA")
+@NamedQueries({
+  @NamedQuery(name = "Categoria.findAll",
+          query = "SELECT c FROM Categoria c"),
+  @NamedQuery(name = "Categoria.findById",
+          query = "SELECT c FROM Categoria c WHERE c.id = :idCat")
+})
 public class Categoria implements Serializable {
 
   @Id
@@ -52,7 +61,7 @@ public class Categoria implements Serializable {
   private String nome;
 
   @ManyToMany(mappedBy = "categorias")
-  private List<Produto> produtos;
+  private Set<Produto> produtos;
 
   public Categoria() {
 
@@ -79,11 +88,11 @@ public class Categoria implements Serializable {
     this.nome = nome;
   }
 
-  public List<Produto> getProdutos() {
+  public Set<Produto> getProdutos() {
     return produtos;
   }
 
-  public void setProdutos(List<Produto> produtos) {
+  public void setProdutos(Set<Produto> produtos) {
     this.produtos = produtos;
   }
 

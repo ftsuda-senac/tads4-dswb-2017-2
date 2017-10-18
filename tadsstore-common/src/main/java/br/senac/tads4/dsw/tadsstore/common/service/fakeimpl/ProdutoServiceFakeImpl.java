@@ -56,6 +56,7 @@ public class ProdutoServiceFakeImpl implements ProdutoService {
 
   static {
     CategoriaService categorias = new CategoriaServiceFakeImpl();
+    /*
     Produto produto = new Produto(1L, "Floresta negra",
             DESCRICAO_PADRAO,
             new BigDecimal(100), new Date(),
@@ -86,6 +87,7 @@ public class ProdutoServiceFakeImpl implements ProdutoService {
             Arrays.asList(new ImagemProduto(9L, "Bla bla bla", "imagem04a.jpg"), new ImagemProduto(10L, "Xpto Xpto", "imagem04b.jpg")),
             Arrays.asList(categorias.obter(1), categorias.obter(5), categorias.obter(7), categorias.obter(8)));
     MAPA_PRODUTOS.put(produto.getId(), produto);
+*/
   }
 
   @Override
