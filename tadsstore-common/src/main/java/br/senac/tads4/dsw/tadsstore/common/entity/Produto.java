@@ -26,6 +26,7 @@ package br.senac.tads4.dsw.tadsstore.common.entity;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -61,7 +62,7 @@ public class Produto implements Serializable {
   private Long id;
 
   //@NotNull 
-  @Size(min = 1, max = 100, 
+  @Size(min = 1, max = 100,
           message = "{produto.nome.erro}")
   @Column(name = "NM_PRODUTO", length = 100, nullable = false)
   private String nome;
@@ -91,12 +92,15 @@ public class Produto implements Serializable {
           })
   private Set<Categoria> categorias;
 
-  @OneToMany(mappedBy = "produto", fetch = FetchType.LAZY, 
+  @OneToMany(mappedBy = "produto", fetch = FetchType.LAZY,
           cascade = CascadeType.REMOVE)
   private Set<ImagemProduto> imagens;
-  
+
   @Transient
   private String observacoes;
+
+  @Transient
+  private Set<Integer> idCategorias;
 
   //private List<ItemCompra> itensCompra;
   public Produto() {
@@ -167,6 +171,12 @@ public class Produto implements Serializable {
 
   public void setCategorias(Set<Categoria> categorias) {
     this.categorias = categorias;
+    if (categorias != null && !categorias.isEmpty()) {
+      this.idCategorias = new LinkedHashSet<Integer>();
+      for (Categoria c : categorias) {
+        idCategorias.add(c.getId());
+      }
+    }
   }
 
   public Set<ImagemProduto> getImagens() {
@@ -184,6 +194,14 @@ public class Produto implements Serializable {
 //  public void setItensCompra(List<ItemCompra> itensCompra) {
 //    this.itensCompra = itensCompra;
 //  }
+
+  public Set<Integer> getIdCategorias() {
+    return idCategorias;
+  }
+
+  public void setIdCategorias(Set<Integer> idCategorias) {
+    this.idCategorias = idCategorias;
+  }
 
   @Override
   public String toString() {
