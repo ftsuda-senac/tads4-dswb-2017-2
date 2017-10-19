@@ -12,6 +12,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -57,18 +58,22 @@ public class ProdutoServiceJPAImpl implements ProdutoService {
   }
 
   @Override
+  @Transactional
   public void incluir(Produto p) {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    entityManager.persist(p);
   }
 
   @Override
+  @Transactional
   public void alterar(Produto p) {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    entityManager.merge(p);
   }
 
   @Override
+  @Transactional
   public void remover(long idProduto) {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    Produto p = entityManager.find(Produto.class, idProduto);
+    entityManager.remove(p);
   }
 
 }

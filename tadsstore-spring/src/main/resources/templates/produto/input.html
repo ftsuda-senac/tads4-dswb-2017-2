@@ -14,6 +14,7 @@
       <form th:action="@{/gerenciamento/produto/salvar}" 
 	    th:object="${produto}" method="post"
 	    novalidate>
+	<input type="hidden" th:field="*{id}" />
 	<div>
 	  <label th:text="#{produto.nome.label}">Nome</label>
 	  <input type="text" name="nome" th:field="*{nome}" required 
@@ -32,7 +33,25 @@
 		 th:placeholder="#{produto.preco.placeholder}" required />
 	  <p th:if="${#fields.hasErrors('preco')}" th:errors="*{preco}"></p>
 	</div>
+	<div>
+	  <label>Categorias</label>
+	  <div>
+	    <ul th:each="c : ${categorias}">
+	      <li><label>
+		  <input type="checkbox" th:field="*{idCategorias}" th:value="${c.id}" />
+		  <span th:text="${c.nome}"></span>
+	      </label></li>
+	    </ul>
+	  </div>
+	</div>
 	<div><input type="submit" value="Enviar" 
+		    th:value="#{botao.enviar}" /></div>
+      </form>
+    </div>
+    <div>
+      <form th:action="@{/gerenciamento/produto/{idProd}/remover(idProd=${produto.id})}"
+	method="post">
+	   <div><input type="submit" value="Apagar produto" 
 		    th:value="#{botao.enviar}" /></div>
       </form>
     </div>
