@@ -33,11 +33,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   @Override
   protected void configure(HttpSecurity http) throws Exception {
     http.authorizeRequests()
-            .antMatchers("/**").authenticated()
+              .antMatchers("/gerenciamento/**").hasRole("FODAO")
+              .antMatchers("/**").authenticated()
             .and()
-            .formLogin()
-            .loginPage("/login").usernameParameter("username")
-            .passwordParameter("senha")
-            .defaultSuccessUrl("/produto").permitAll();
+              .formLogin()
+                .loginPage("/login").usernameParameter("username")
+                .passwordParameter("senha")
+                .defaultSuccessUrl("/produto").permitAll()
+            .and()
+              .logout()
+                .logoutUrl("/logout").logoutSuccessUrl("/login?logout")
+                .invalidateHttpSession(true).deleteCookies("JSESSIONID");
   }
 }
