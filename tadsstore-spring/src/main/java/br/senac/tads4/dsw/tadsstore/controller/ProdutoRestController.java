@@ -23,12 +23,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
  * @author fernando.tsuda
  */
-@Controller
+@RestController // Simplifica o código, permite remover o @ResponseBody dos métodos
 @RequestMapping("/rest/produto")
 public class ProdutoRestController {
 
@@ -39,15 +40,13 @@ public class ProdutoRestController {
   private CategoriaService categoriaService;
 
   @RequestMapping(method = RequestMethod.GET)
-  public @ResponseBody
-  List<Produto> listar() {
+  public List<Produto> listar() {
     return service.listar(0, 100);
   }
 
   @RequestMapping(value = "/{id}", method = RequestMethod.GET)
   @CrossOrigin(origins = "*")
-  public @ResponseBody
-  Produto obter(@PathVariable("id") Long idProd) {
+  public Produto obter(@PathVariable("id") Long idProd) {
     return service.obter(idProd);
   }
 
