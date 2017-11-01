@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Playground web</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <script>
+      $(function () { // Abreviação para $(document).ready(function() { ... });
+
+
+	// 6) AJAX
+	$("#botao3").click(function (ev) {
+	  $.ajax({
+	    method: "GET",
+	    url: "rest/produto/3",
+	    dataType: "json"
+	  }).done(function (dataJSON) {
+	    var htmlDom = "<section class=\"info\"><h2>Dados do produto</h2><ul>" +
+		    "<li>ID: " + dataJSON.id + "</li>" +
+		    "<li>Nome: " + dataJSON.nome + "</li>" +
+		    "<li>Descricao: " + dataJSON.descricao + "</li>" +
+		    "<li>Categorias:<ul>";
+	    for (var i = 0; i < dataJSON.categorias.length; i++) {
+	      htmlDom = htmlDom + "<li>" + dataJSON.categorias[i].nome + "</li>";
+	    }
+	    htmlDom = htmlDom + "</ul></li></ul></section>";
+	    $("#area3").html(htmlDom);
+	  }).fail(function (data) {
+	    alert("Erro");
+	  });
+	});
+
+      });
+
+    </script>
+  </head>
+
+  <body>
+    <h1>Título nível 1</h1>
+
+
+    <hr>
+    <section id="testejs">
+
+      <h2>AJAX (precisa estar rodando como projeto Java no Netbeans/Glassfish)</h2>
+      <div id="area3">
+        <p><code>#area3</code></p>
+        <button id="botao3">Chamada AJAX (#botao3)</button>
+      </div>
+    </section>
+
+  </body>
+
+</html>

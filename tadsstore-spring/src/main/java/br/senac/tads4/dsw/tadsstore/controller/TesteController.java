@@ -21,4 +21,9 @@ public class TesteController {
     return new ModelAndView("teste");
   }
   
+  @RequestMapping("/teste-ajax-ws")
+  public ModelAndView testeAjax() {
+    return new ModelAndView("exemplos-jquery");
+  }
+  
 }
